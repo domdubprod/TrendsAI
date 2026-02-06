@@ -1,11 +1,9 @@
 [build]
   command = "cd frontend && npm install && npm run build"
   publish = "frontend/dist"
-  functions = "netlify/functions"
 
 [functions]
-  directory = "netlify/functions"
-  node_bundler = "esbuild"
+  directory = "functions"
 
 [[redirects]]
   from = "/api/*"
