@@ -1,0 +1,39 @@
+1
+00:00:00,000 --> 00:00:04,500
+Welcome to TrendsAI, the ultimate smart engine for YouTube trend discovery.
+
+2
+00:00:04,500 --> 00:00:08,500
+Today, we'll see how to find high-potential niches in seconds.
+
+3
+00:00:08,500 --> 00:00:13,000
+First, we define our niche. Let's explore the "Quantum Computing" ecosystem.
+
+4
+00:00:13,000 --> 00:00:19,000
+By clicking Discover, the system connects to Google Trends via our custom service to find real-time rising queries.
+
+5
+00:00:19,000 --> 00:00:24,000
+The AI generates strategic entry points. Unlike generic templates, these are based on live YouTube data.
+
+6
+00:00:24,000 --> 00:00:28,500
+We can filter by time range and video format to refine our search.
+
+7
+00:00:28,500 --> 00:00:33,000
+Once we pick a keyword, TrendsAI analyzes actual YouTube videos.
+
+8
+00:00:33,000 --> 00:00:39,000
+It classifies opportunities as High, Medium, or Emerging based on their viral potential and freshness.
+
+9
+00:00:39,000 --> 00:00:44,000
+With TrendsAI, you're not just guessing—you're following the data.
+
+10
+00:00:44,000 --> 00:00:47,000
+Start dominating your niche today.
