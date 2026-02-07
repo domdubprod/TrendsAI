@@ -4,7 +4,7 @@
 
 # 1. Configurar Backend (Python)
 echo "--- Configurando Backend (Python) ---"
-cd functions
+cd netlify/functions/api
 
 if [ ! -d "venv" ]; then
     echo "Creando entorno virtual..."
@@ -20,7 +20,7 @@ export PYTHONPATH=$PYTHONPATH:$(pwd)
 python3 main.py &
 BACKEND_PID=$!
 
-cd ..
+cd ../../../
 
 # 2. Configurar Frontend (Node.js)
 echo "--- Configurando Frontend (Node.js) ---"
