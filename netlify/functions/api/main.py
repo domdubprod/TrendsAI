@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
@@ -6,6 +7,20 @@ from services.youtube_service import YouTubeService
 from services.trends_service import TrendsService
 from services.gemini_service import GeminiService
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+
+# Robust .env discovery from project root
+def load_root_env():
+    curr = os.path.dirname(os.path.abspath(__file__))
+    # Try multiple levels up to find the project root .env
+    for _ in range(5):
+        if os.path.exists(os.path.join(curr, ".env")):
+            load_dotenv(os.path.join(curr, ".env"))
+            print(f"INFO: Loaded environment from {os.path.join(curr, '.env')}")
+            return
+        curr = os.path.dirname(curr)
+load_root_env()
+load_dotenv() # Fallback
 
 app = FastAPI(title="TrendsAI - Trend Engine")
 

@@ -7,11 +7,16 @@ from typing import List, Dict, Any, Optional
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
-# Load environment variables from the root directory if possible
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ENV_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(BASE_DIR)))), ".env")
-load_dotenv(ENV_PATH)
-load_dotenv() # Fallback to local .env
+# Robust .env discovery
+def load_root_env():
+    curr = os.path.dirname(os.path.abspath(__file__))
+    for _ in range(5):
+        if os.path.exists(os.path.join(curr, ".env")):
+            load_dotenv(os.path.join(curr, ".env"))
+            return
+        curr = os.path.dirname(curr)
+load_root_env()
+load_dotenv() # Fallback
 
 class YouTubeService:
     def __init__(self, db_path: str = None):

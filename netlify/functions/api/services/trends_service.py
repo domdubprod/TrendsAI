@@ -1,9 +1,22 @@
+import os
 import time
 import sqlite3
 import json
 from typing import List, Optional
 from datetime import datetime, timedelta
 from pytrends.request import TrendReq
+from dotenv import load_dotenv
+
+# Robust .env discovery
+def load_root_env():
+    curr = os.path.dirname(os.path.abspath(__file__))
+    for _ in range(5):
+        if os.path.exists(os.path.join(curr, ".env")):
+            load_dotenv(os.path.join(curr, ".env"))
+            return
+        curr = os.path.dirname(curr)
+load_root_env()
+load_dotenv() # Fallback
 
 class TrendsService:
     def __init__(self, db_path: str = None):

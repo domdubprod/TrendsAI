@@ -4,7 +4,16 @@ import google.generativeai as genai
 from typing import List, Dict
 from dotenv import load_dotenv
 
-load_dotenv()
+# Robust .env discovery
+def load_root_env():
+    curr = os.path.dirname(os.path.abspath(__file__))
+    for _ in range(5):
+        if os.path.exists(os.path.join(curr, ".env")):
+            load_dotenv(os.path.join(curr, ".env"))
+            return
+        curr = os.path.dirname(curr)
+load_root_env()
+load_dotenv() # Fallback
 
 class GeminiService:
     def __init__(self):
