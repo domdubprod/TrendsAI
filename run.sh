@@ -32,7 +32,7 @@ if [ ! -d "node_modules" ]; then
 fi
 
 echo "Iniciando Frontend (Vite) en puerto 3000..."
-npm run dev -- --port 3000
+npm run dev -- --port 3000 --host 0.0.0.0
 
 # Al cerrar el frontend, matamos el backend
 trap "kill $BACKEND_PID" EXIT
