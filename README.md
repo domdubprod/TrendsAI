@@ -23,13 +23,20 @@ YOUTUBE_API_KEY=tu_api_key_aqui
 
 ## Cómo Correr la Aplicación
 
-Hemos incluido un script de automatización para facilitar el inicio:
+Hemos incluido scripts para facilitar el inicio:
 
+### 1. Opción Rápida (Recomendada para macOS)
+Doble clic en el archivo **`TrendsAI.command`**.
+- Esto abrirá una terminal automáticamente.
+- Instalará lo que falte (la primera vez).
+- **Abrirá tu navegador** en `http://localhost:3000` cuando esté listo.
+
+### 2. Opción por Terminal
+Si prefieres usar la terminal:
 1. Dale permisos de ejecución al script:
    ```bash
    chmod +x run.sh
    ```
-
 2. Ejecuta el script:
    ```bash
    ./run.sh
