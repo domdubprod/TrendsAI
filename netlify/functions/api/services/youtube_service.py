@@ -7,13 +7,24 @@ from typing import List, Dict, Any, Optional
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
-load_dotenv()
+# Load environment variables from the root directory if possible
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ENV_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(BASE_DIR)))), ".env")
+load_dotenv(ENV_PATH)
+load_dotenv() # Fallback to local .env
 
 class YouTubeService:
-    def __init__(self, db_path: str = "backend/youtube_cache.db"):
+    def __init__(self, db_path: str = None):
         self.api_key = os.getenv("YOUTUBE_API_KEY")
         self.base_url = "https://www.googleapis.com/youtube/v3"
-        self.db_path = db_path
+        
+        if db_path is None:
+            # Create the database in the same directory as this service for local execution
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            self.db_path = os.path.join(current_dir, "youtube_cache.db")
+        else:
+            self.db_path = db_path
+            
         self._init_db()
 
     def _init_db(self):

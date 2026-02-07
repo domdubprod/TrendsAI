@@ -6,10 +6,15 @@ from datetime import datetime, timedelta
 from pytrends.request import TrendReq
 
 class TrendsService:
-    def __init__(self, db_path: str = "backend/youtube_cache.db"):
-        self.db_path = db_path
+    def __init__(self, db_path: str = None):
+        if db_path is None:
+            # Re-use the same database as YouTubeService
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            self.db_path = os.path.join(current_dir, "youtube_cache.db")
+        else:
+            self.db_path = db_path
+            
         # hl='es-419' for Latin American Spanish, tz=360 (Mexico City/General GMT-6)
-        # Added requests_args with timeout and verification disabled to help with connection issues
         self.pytrends = TrendReq(hl='es-419', tz=360, retries=2, backoff_factor=0.1, timeout=(10, 25))
         self._init_db()
 

@@ -1,10 +1,8 @@
-import os
-import json
-from typing import List, Dict, Any
-from dotenv import load_dotenv
-from openai import OpenAI
-
-load_dotenv()
+# Load environment variables from the root directory if possible
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ENV_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(BASE_DIR)))), ".env")
+load_dotenv(ENV_PATH)
+load_dotenv() # Fallback to local .env
 
 class LLMService:
     def __init__(self):
